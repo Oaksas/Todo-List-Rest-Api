@@ -12,3 +12,74 @@ info:
     -url: "http://localhost:4000/"
     description: Local server
 schemes: [http, https]
+
+paths:
+  /todos:
+    get:
+      summary: TODOs
+      description: Returns list of todos of a user
+      responses:
+        200:
+          description: Success
+        400:
+          description: Not Found
+
+  /todo/{id}:
+    get:
+      summary: A todo
+      description: Returns a todo with an id given
+      parameters:
+        - name: ID
+          in: path
+          required: true
+          scheme:
+            type: integer
+      responses:
+        200:
+          description: Success
+        400:
+          description: Error
+  /todo:
+    post:
+      summary: posting todos
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: Todo
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+      responses:
+        200:
+          description: Success
+
+  /register:
+    post:
+      summary: registering users
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: Users
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              sex:
+                type: string
+                example: "M or F"
+      responses:
+        200:
+          description: Success
