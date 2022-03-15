@@ -1,0 +1,14 @@
+swagger: "2.0"
+info:
+  title: Task Manager API
+  description: This api has a basic crud operation with Client and Admin as a Role.
+  version: 1.0.0
+  contact:
+    email: aman.getnet2@gmail.com
+  license:
+    name: Apache 2.0
+    url: "http://apache.org"
+  servers:
+    -url: "http://localhost:4000/"
+    description: Local server
+schemes: [http, https]
