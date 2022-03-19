@@ -1,29 +1,14 @@
 const express = require("express");
 const app = express();
-const swaggerUI = require("swagger-ui-express");
-const YAML = require("yamljs");
-const swaggerJSDocs = YAML.load("./api.yaml");
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs));
-app.use(express.json());
 
-//Routes
-app.get("/todos", (req, res) => {
-  res.status(400).send("STRING RES");
-});
+//import todo routes
+const todoRoutes = require("./src/Routes/TaskRoutes");
 
-app.get("/todo/:id", (req, res) => {
-  const obj = { name: "todo1" };
-  res.status(200).send(obj + " : with ID " + req.params.id);
-});
+//create todo routes
+app.use("/api/v1/todos", todoRoutes);
 
-app.post("/todo", (req, res) => {
-  todo = [req.body];
-  res.status(200).send(todo);
-});
-
-app.post("/register", (req, res) => {
-  userInfo = [req.body];
-  res.status(200).send(userInfo);
-});
-
+// app.get("/todos/:id", (req, res) => {
+//   const todo = { name: "todo1" };
+//   res.status(200).send(todo);
+// });
 app.listen(4000, () => console.log("UP & RUNNING"));
